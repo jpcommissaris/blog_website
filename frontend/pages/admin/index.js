@@ -24,6 +24,9 @@ const adminindex = () => {
                                 <Link href="admin/crud/blog">
                                     <ListGroup.Item action href="#"> Create Blog</ListGroup.Item>
                                 </Link>
+                                <Link href="admin/crud/bloglist">
+                                    <ListGroup.Item action href="#">Update/Delete Blogs</ListGroup.Item>
+                                </Link>
                             </ListGroup>
                         </Col>
                         <Col md='8'>

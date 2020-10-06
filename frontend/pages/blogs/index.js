@@ -2,11 +2,13 @@ import Head from 'next/head'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 
+
 import Layout from '../../components/Layout'
 import {useState} from 'react'
 import {listBlogsWithCategoriesAndTags} from '../../actions/blog'
 import BlogCard from '../../components/blog/BlogCard'
 import {API, DOMAIN, APP_NAME} from '../../config'
+
 
 
 import Container from 'react-bootstrap/Container'
@@ -15,9 +17,26 @@ import Col from 'react-bootstrap/Col'
 
 
 
-const index = ({blogs, categories, tags, size}) => {
+const index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
 
     const router = useRouter()
+    const [limit, setLimit] = useState(blogsLimit)
+    const [skip, setSkip] = useState(0)
+    const [size, setSize] = useState(totalBlogs)
+    const [loadedBlogs, setLoadedBlogs] = useState(blogs)
+
+    const loadMore = () => {
+        let toSkip = skip+limit
+        listBlogsWithCategoriesAndTags(toSkip, limit).then(data => {
+            if(data.error){
+                console.log(data.error)
+            }else{
+                setLoadedBlogs([...loadedBlogs, ...data.blogs])
+                setSize(data.size)
+                setSkip(toSkip) 
+            }
+        })
+    }
 
     const head = () => (
         <Head>
@@ -27,7 +46,7 @@ const index = ({blogs, categories, tags, size}) => {
                 content="blogs on programming react node next python and web development"
             />
 
-            <link rel="canonical" href={`${DOMAIN}${router.pathname}`}></link>
+            <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
             <meta 
                 property='og:title'
                 content={`latest web development blogs | ${APP_NAME}`}
@@ -62,13 +81,11 @@ const index = ({blogs, categories, tags, size}) => {
                         </section>
                     </header>  
                 </Container>
-                <Container fluid>
-                    <Row>
-                        <Col md={12}>
-                            {showAllBlogs()}
-                        </Col>
-                    </Row>
-                </Container>
+                
+                <Container fluid> {showLoadedBlogs()}</Container>
+                <Container fluid className='text-center'> {loadMoreButton()}</Container>
+                         
+                
                 
             </main>
         </Layout>
@@ -80,22 +97,30 @@ const index = ({blogs, categories, tags, size}) => {
             <div className='text-center pb-5'>
                 {categories.map((c, i) => (
                     <Link href={`/categories/${c.slug}`} key={i}>
-                        <a className='btn category-btn'> {c.name} </a>
+                        <a className='btn btn-category'> {c.name} </a>
                     </Link>
                 ))}
             </div> 
         )
     }
 
-
-    const showAllBlogs = () => {
-        return blogs.map((blog, i) => {
+    const showLoadedBlogs = () => {
+        return loadedBlogs.map((blog, i) => {
             return (
             <article key={i}>
                 <BlogCard blog={blog} /> 
                 <hr />
             </article>
         )})
+    }
+
+    const loadMoreButton = () => {
+        return (
+            size > 0 && size >= limit &&
+            <button onClick={loadMore} className= 'btn btn-primary btn-lg'>
+                load more
+            </button>
+        )
     }
 
     return (
@@ -110,7 +135,9 @@ const index = ({blogs, categories, tags, size}) => {
 //good for SEO because the first time it sees your page it will see all data from blog
 
 index.getInitialProps = () => {
-    return listBlogsWithCategoriesAndTags().then(data => {
+    let skip = 0
+    let limit = 2
+    return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
         if(data.error){
             console.log(data.error)
         }else {
@@ -118,7 +145,9 @@ index.getInitialProps = () => {
                 blogs: data.blogs,
                 categories: data.categories,
                 tags: data.tags,
-                size: data.size 
+                totalBlogs : data.size,
+                blogsLimit: limit,
+                blogsSkip: skip
             }
         }
     })
