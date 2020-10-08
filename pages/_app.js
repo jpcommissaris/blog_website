@@ -3,6 +3,10 @@ import '../styles.css'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'nprogress/nprogress.css';
 
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
+config.autoAddCss = false; /* eslint-disable import/first */
+
 import NProgress from 'nprogress';
 import Router from 'next/router';
 

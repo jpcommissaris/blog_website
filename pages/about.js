@@ -6,7 +6,6 @@ const about = () => {
     return(
         <Layout>
             <h2>about page</h2>
-            
         </Layout>   
     )
 }

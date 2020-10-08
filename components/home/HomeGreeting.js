@@ -2,16 +2,20 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import {useRouter} from 'next/router'
 
 const namestyle = {
-    fontSize: '32px',
+    fontSize: '56px',
+    lineHeight: '64px',
     marginBottom: '0px',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontFamily: 'arial, serif'
 }
 const bodystyle = {
-    fontSize: '16px',
+    fontSize: '24px',
     margin: '6px 0px 2px 0px',
-    lineHeight: '20px'
+    lineHeight: '24px',
+    fontFamily: 'open sans'
 }
 
 const containerstyle = {
@@ -28,6 +32,8 @@ const hrstyle = {
 
 
 const HomeGreeting = () => {
+    const router = useRouter()
+
     return (
         <React.Fragment >
             <Container style={containerstyle}>
@@ -35,7 +41,7 @@ const HomeGreeting = () => {
                 <p style={namestyle}>Commissaris</p> 
                 <p style={bodystyle}>UCSB student and aspiring software developer</p> 
                 <hr style={hrstyle} size='30'/>
-                <Button variant='outline-primary'>Contact Me</Button>
+                <Button variant='outline-primary' onClick={() => router.push('/contact')}>Contact Me</Button>
                 
             </Container>
         </React.Fragment>
