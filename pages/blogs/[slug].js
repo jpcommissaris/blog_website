@@ -7,7 +7,7 @@ import {useEffect, useState} from 'react'
 import Layout from '../../components/layout/Layout'
 import RelatedCard from '../../components/blog/RelatedCard'
 import {singleBlog, listRelatedBlogs} from '../../actions/blog'
-import {API, DOMAIN, APP_NAME} from '../../config'
+import {API, DOMAIN} from '../../config'
 
 import Container from 'react-bootstrap/Container'
 import Row from  'react-bootstrap/Row'
@@ -47,7 +47,7 @@ const SingleBlog = ({blog, query}) => {
 
     const head = () => (
         <Head>
-            <title> {blog.title} | {APP_NAME} </title>
+            <title> {blog.title} | Julian Commissaris </title>
             <meta 
                 name="description" 
                 content={blog.meta_desc}
