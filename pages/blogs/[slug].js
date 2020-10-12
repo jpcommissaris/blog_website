@@ -56,7 +56,7 @@ const SingleBlog = ({blog, query}) => {
             <link rel="canonical" href={`${DOMAIN}${query.slug}`} />
             <meta 
                 property='og:title'
-                content={`${blog.title} | ${APP_NAME}`}
+                content={`${blog.title} | Julian Commissaris`}
             />
             <meta 
                 name="og:description" 
@@ -64,7 +64,7 @@ const SingleBlog = ({blog, query}) => {
             />
             <meta name="og:type" content="website"/>
             <meta name="og:url" content={`${DOMAIN}/blogs/${query.slug}`}/>
-            <meta name="og:site_name" content={`${APP_NAME}`}/>
+            <meta name="og:site_name" content={`juliancommissaris`}/>
 
             <meta name="og:image" content={`${API}/blog/photo/${blog.slug}`}/>
             <meta name="og:image:secure_url" content={`${API}/blog/photo/${blog.slug}`}/>

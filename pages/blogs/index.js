@@ -7,7 +7,7 @@ import Layout from '../../components/layout/Layout'
 import {useState} from 'react'
 import {listBlogsWithCategoriesAndTags} from '../../actions/blog'
 import BlogCard from '../../components/blog/BlogCard'
-import {API, DOMAIN, APP_NAME} from '../../config'
+import {API, DOMAIN} from '../../config'
 
 
 
