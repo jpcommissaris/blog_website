@@ -10,7 +10,7 @@ const circle = {
     backgroundColor: 'white',
     borderRadius: '50%',
     top: '25px',
-    right: '120px',
+    right: '20px',
 }
 const image = {
     position: 'absolute',
@@ -18,10 +18,12 @@ const image = {
     width: 'auto',
     backgroundColor: 'none',
     bottom: '0px',
-    right: '70px', 
+    right: '20px', 
 }
 const containerstyle = {
-
+    position: 'relative',
+    minHeight: '500px',
+    width: '100%'
 }
 
 const HomeImage = () => {

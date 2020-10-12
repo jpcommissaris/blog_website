@@ -38,6 +38,7 @@ function Header(props) {
                     {navLink('/about', 'about')}
                     {navLink('/blogs', 'blogs')}
                     {navLink('/projects', 'projects')}
+                    {navLink('/contact', 'contact me')}
                 </Nav> 
                 <Nav>
                 <SocialMediaLinks/>

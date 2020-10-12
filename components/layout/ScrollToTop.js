@@ -11,11 +11,15 @@ const ScrollToTop = (props) => {
         childRef.current.addEventListener("scroll", (e) => {
             toggleVisibility();
         });
-    },[])
+        window.addEventListener('resize', (e) => {
+            toggleVisibility();
+        });
+    }, [])
 
     const toggleVisibility = () => {
-        console.log(childRef)
-        if (childRef.current.scrollTop > 50 ) {
+        console.log(childRef, childRef.current)
+        if (childRef.current && childRef.current.scrollTop > 50 && window.innerWidth > 600) {
+            console.log(window.innerWidth)
             setVisible(true)
         }else {
             setVisible(false)
@@ -32,7 +36,6 @@ const ScrollToTop = (props) => {
     }
     const getClasses = () => {
         let visibility = visible ? 'sb-fadeIn' : 'sb-fadeOut'
-        console.log(visibility)
         return `scroll-button shadow ${visibility}`
     }
     

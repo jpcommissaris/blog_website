@@ -34,6 +34,7 @@ const hrstyle = {
 const HomeGreeting = () => {
     const router = useRouter()
 
+
     return (
         <React.Fragment >
             <Container style={containerstyle}>
