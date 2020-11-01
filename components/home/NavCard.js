@@ -12,7 +12,9 @@ const NavCard = ({title, link, body}) => {
     return (
         <Link href={link}>
             <Card className="shadow rounded nav-card-link bg-light text-dark" style={cardstyle}>
-                    <Card.Img  src= {`static${link}.jpeg`} />
+                    <div style={{backgroundColor: 'black'}}>
+                        <Card.Img  src= {`static${link}.jpeg`} />
+                    </div>
                     <Card.Body>
                         <Card.Title >{title}</Card.Title>
                         <Card.Text>{body} </Card.Text>

@@ -1,9 +1,9 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-unfetch'
 import {API} from '../config'
 
 export const listBlogsWithCategoriesAndTags = (skip, limit) => {
     const data = {limit: limit, skip: skip}
-    return fetch(`${API}/blogs-categories-tags`, {
+    return fetch(`${API}/blogs/list`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -18,7 +18,7 @@ export const listBlogsWithCategoriesAndTags = (skip, limit) => {
 }
 
 export const singleBlog = slug => {
-    return fetch(`${API}/blog/${slug}`, {
+    return fetch(`${API}/blogs/${slug}`, {
         method: 'GET'
     })
     .then(res => {
@@ -51,5 +51,7 @@ export const listBlogs = () => {
     })
     .catch(err => console.log(err))
 }
+
+
 
 

@@ -1,30 +1,11 @@
 import React, { useState, useEffect, useRef } from "react"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faPaperPlane} from '@fortawesome/free-solid-svg-icons'
 
-import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
 
-const circle = {
-    backgroundColor: 'orange',
-    height: '32px',
-    width: '40px',
-    borderRadius: '50%',
-    margin: '20  px 0px 0px 30px'
-}
-const iconstyle= {
-    fontSize: '18px',
-    position: 'relative',
-    backgroundColor: 'orange',
-    top: '5px',
-    left: '9px',
-    textAlign: 'center',
-    color: 'black'
-}
 const header = {
     padding: '8px 40px'
 }
@@ -93,13 +74,8 @@ function ContactForm(props) {
         <div className='form-wrapper' >
             <Form className= 'shadow' style={{backgroundColor: 'white'}}>
                 <Row style={{ margin: '0px', backgroundColor: '#b2e8a2',}}>
-                    <Col sm={10}>
+                    <Col sm={12}>
                         <h1 style={header}> Contact Me </h1> 
-                    </Col>
-                    <Col sm={2} >
-                        <div style={circle}>
-                            <FontAwesomeIcon style={iconstyle} icon={faPaperPlane}/>
-                        </div>
                     </Col>
                 </Row>
             

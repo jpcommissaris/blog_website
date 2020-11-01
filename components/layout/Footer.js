@@ -25,7 +25,7 @@ function Footer(){
     return (
         <Navbar style={footerStyle} expand="sm">
             <Nav className="mr-auto">
-                <p style={contactStyle}> jpcommissaris@gmail.com  &nbsp; &nbsp; 650-867-8425   </p>
+                <p style={contactStyle}> Julian Commissaris  </p>
             </Nav>
             <Nav>
                 <SocialMediaLinks/>

@@ -24,11 +24,7 @@ const SingleBlog = ({blog, query}) => {
 
     const loadRelated = () => {
         listRelatedBlogs({blog}).then(data => {
-            if(data.error){
-                console.log(data.error)
-            }else{
-                setRelated(data)
-            }
+            setRelated(data)
         })
     }
 
@@ -36,7 +32,7 @@ const SingleBlog = ({blog, query}) => {
         console.log(related)
         return (
             <Row>
-                {related.map((blog, i) => (
+                {related && related.map((blog, i) => (
                     <Col md={4} key={i}>
                         <RelatedCard blog={blog} />
                     </Col>
@@ -100,7 +96,7 @@ const SingleBlog = ({blog, query}) => {
                                 <Row style={{marginTop: '-30px'}}>
                                     <Image 
                                         fluid rounded 
-                                        src={`${API}/blog/photo/${blog.slug}`} 
+                                        src={`${API}/blogs/photo/${blog.slug}`} 
                                         alt={blog.title}
                                         className='featured-image'
                                     />
@@ -143,11 +139,8 @@ const SingleBlog = ({blog, query}) => {
 
 SingleBlog.getInitialProps = ({query}) => {
     return singleBlog(query.slug).then(data => {
-        if(data.error){
-            console.log(data.error)
-        }else{
-            return {blog: data, query}
-        }
+        console.log(data)
+        return {blog: data, query}
     })
 }
 

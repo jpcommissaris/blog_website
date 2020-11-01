@@ -22,7 +22,7 @@ const RelatedCard = ({blog}) => {
                     <Card.Img
                         className='img img-fluid' 
                         style={imagestyle} 
-                        src={`${API}/blog/photo/${blog.slug}`}
+                        src={`${API}/blogs/photo/${blog.slug}`}
                         alt={blog.title} 
                     />        
                 </Link>

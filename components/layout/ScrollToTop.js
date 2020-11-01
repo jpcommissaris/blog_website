@@ -17,9 +17,7 @@ const ScrollToTop = (props) => {
     }, [])
 
     const toggleVisibility = () => {
-        console.log(childRef, childRef.current)
         if (childRef.current && childRef.current.scrollTop > 50 && window.innerWidth > 600) {
-            console.log(window.innerWidth)
             setVisible(true)
         }else {
             setVisible(false)
@@ -42,9 +40,11 @@ const ScrollToTop = (props) => {
     return (
         <div>
             <button ref={scrollButton} className= {getClasses()} onClick={() => scrollUp()}>
-                <FontAwesomeIcon icon={faArrowAltCircleUp}/>
+                ^
             </button>
         </div>
     )
 }
 export default ScrollToTop
+
+//<FontAwesomeIcon icon={faArrowAltCircleUp}/>
