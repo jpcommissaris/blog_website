@@ -3,49 +3,72 @@ import Nav from 'react-bootstrap/Nav';
 import {APP_NAME} from '../../config.js'
 import Link from 'next/link'
 import SocialMediaLinks from './SocialMediaLinks'
+import BlogSidebar from './BlogSidebar';
+import {useState, useEffect} from 'react'
+
+import Container from 'react-bootstrap/Container'
+import Row from  'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
+
 
 const style = {
     width: '100%',
-    height: '50px',
-    padding: '16px 36px',
     borderStyle: 'solid none solid none' ,
     borderWidth: '1px',
-    borderColor: '#7d7d7c'
+    borderColor: 'white',
 } 
 
+const h1style = {
+    padding: '0px',
+    maring: '0px'
+}
 
 
-function Header(props) {
+function BlogHeader(props) {
+
+    const [padding, setPadding] = useState('ex-large')
+
+    useEffect(()=> {
+        window.addEventListener('scroll', (e) => {
+            if(window.scrollY > 45) setPadding('small-opacity')
+            else if(window.scrollY < 1) setPadding('ex-large')
+        })
+    }, [])
+
+    const getClasses = () => {
+        return `padding-${padding}`
+    }
 
     const navLink = (link, text) => {
         return(
             <React.Fragment>
                 <Link href={link}>
-                    <Nav.Link href={link}> {text}</Nav.Link>
+                    <div className='underline-on-hover pl-2 pr-2 font-weight-bold'>
+                        <a href={link}> {text}</a>
+                    </div>
                 </Link>
             </React.Fragment>
         )
     }
     
     return (
-        <Navbar variant= "light" bg="light" expand="sm" style={style}>
-            <Link href="/">
-                <Navbar.Brand href='/'>home</Navbar.Brand>
-            </Link>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className='mr-auto'>
-                    {navLink('/about', 'about')}
-                    {navLink('/blogs', 'blogs')}
-                    {navLink('/projects', 'projects')}
-                    {navLink('/contact', 'contact me')}
+        <Navbar className={getClasses()} sticky='top' style={style}>
+            <Container fluid>
+                <Nav style={{width: '100%'}} className='mx-auto'>
+                    <Col sm='3' className= 'align-self-center'>
+                        <BlogSidebar />
+                    </Col>
+                    <Col sm='6' className= 'text-center align-self-center'>
+                        <Navbar.Brand style={{color: 'white', fontSize: '32px', margin: '0px'}} >Julian's Tech Blog</Navbar.Brand>
+                    </Col>
+                    <Col sm='3' className= 'align-self-center'>
+                        <SocialMediaLinks color='white'/>
+                    </Col>
                 </Nav> 
-                <Nav>
-                <SocialMediaLinks/>
-                </Nav>
-            </Navbar.Collapse>
+            </Container>
         </Navbar>
     
     )
 }
-export default Header
+export default BlogHeader

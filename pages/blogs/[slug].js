@@ -6,7 +6,7 @@ import {useEffect, useState} from 'react'
 
 import Layout from '../../components/layout/Layout'
 import RelatedCard from '../../components/blog/RelatedCard'
-import {singleBlog, listRelatedBlogs} from '../../actions/blog'
+import {singleBlog, listRelatedBlogs, getLatestBlog} from '../../actions/blog'
 import {API, DOMAIN} from '../../config'
 
 import Container from 'react-bootstrap/Container'
@@ -14,13 +14,34 @@ import Row from  'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 
+const containerStyle = {
+    maxWidth: '1200px',
+    padding: '60px'
+}
+
+const timestyle= {
+    margin: '0px',
+    fontSize: '14px',
+    padding: '2px 4px',
+    fontStyle: 'oblique',
+}
+
+const authorStyle = {
+    margin: '0px',
+    fontSize: '18px',
+    fontWeight: 'bold',
+    padding: '2px 0px',
+}
+
 const SingleBlog = ({blog, query}) => {
 
     const [related, setRelated] = useState([])
+    const [latest, setLatest] = useState('')
 
     useEffect(() => {
         loadRelated()
-    }, [])
+        loadLatest()
+    }, [blog])
 
     const loadRelated = () => {
         listRelatedBlogs({blog}).then(data => {
@@ -28,18 +49,20 @@ const SingleBlog = ({blog, query}) => {
         })
     }
 
-    const showRelatedBlogs = () => {
-        console.log(related)
-        return (
-            <Row>
-                {related && related.map((blog, i) => (
-                    <Col md={4} key={i}>
-                        <RelatedCard blog={blog} />
-                    </Col>
-                ))}
-            </Row>
-        )
+    const loadLatest = () => {
+        getLatestBlog({blog}).then(data => {
+            console.log(data)
+            setLatest(data)
+        })
     }
+
+    const showRelatedBlogs = () => (
+        related && related.map((blog, i) => (
+            <RelatedCard key={i} blog={blog} />
+        ))
+    )
+
+    
 
     const head = () => (
         <Head>
@@ -68,18 +91,10 @@ const SingleBlog = ({blog, query}) => {
         </Head> 
     ) 
 
-    const showBlogCategories = (blog) => {
-        return blog.categories.map((c, i) => (
-            <Link key={i} href={`/categories/${c.slug}`}>
-                <a className='btn btn-category' > {c.name} </a>
-            </Link>
-        ))
-    }
-
     const showBlogTags = (blog) => {
         return blog.tags.map((t, i) => (
             <Link key={i} href={`/tags/${t.slug}`}>
-                <a className='btn btn-tag' > {t.name} </a>
+                <a href={`/tags/${t.slug}`} className='btn btn-tag' > {t.name} </a>
             </Link>
         ))
     }
@@ -88,46 +103,48 @@ const SingleBlog = ({blog, query}) => {
     return (
         <React.Fragment>
             {head()}
-            <Layout>
+            <Layout blog >
                 <main>
                     <article> 
-                        <Container fluid>
-                            <section>
-                                <Row style={{marginTop: '-30px'}}>
-                                    <Image 
-                                        fluid rounded 
-                                        src={`${API}/blogs/photo/${blog.slug}`} 
-                                        alt={blog.title}
-                                        className='featured-image'
-                                    />
-                                </Row> 
-                            </section> 
-                            <section>
-                                <Container>
-                                    <h1 className='display-2 pb-3 text-center font-weight-bold'>{blog.title}</h1>
-                                    <p className='mark pt-2 pb-2'> 
-                                        Written by {blog.postedBy.name} | Published {moment(blog.updatedAt).fromNow()}
-                                    </p>
-                                    <div className= 'pb-3'>
-                                        {showBlogCategories(blog)}
-                                        {showBlogTags(blog)}
-                                    </div>
-                                </Container>
-                            </section>
-                        </Container>
-                        <Container fluid>
-                            <section>
-                                <Col md={12} className='lead'>
-                                    {renderHTML(blog.body)}
+                        <Container fluid style={containerStyle}>
+                            <Row>
+                                <Col md='8'>
+                                    <section>
+                                        <hr/>
+                                        <h1 className='font-weight-bold'> {blog.title} </h1>
+
+                                    </section>
+                                    <section>
+                                        <p  className='lead ml-1 mb-0'> 
+                                            <span style={authorStyle}>Julian Commissaris </span>- <span style={timestyle}> Published {moment(blog.updatedAt).fromNow() } </span>
+                                        </p>
+                                    </section>
+                                    <section>
+                                        <Image 
+                                            fluid rounded 
+                                            src={`${API}/blogs/photo/${blog.slug}`} 
+                                            alt=''
+                                            className=' pt-4 pb-5 featured-image'
+                                        />
+                                    </section>
+                                    <section className='blog-body'>
+                                        {renderHTML(blog.body)}
+                                    </section>
                                 </Col>
-                            </section> 
-                        </Container>
-                        <Container fluid className='pb-5'>
-                            <section>
-                                <h4 md={12} className='text-center pt-5 pb-5 h2'> Related blogs </h4>  
-                                <hr />
-                                {showRelatedBlogs()} 
-                            </section> 
+                                <Col md='4' style={{padding: '60px 10px 10px 50px'}}>
+                                    <section>
+                                        <h2>Check Out My Latest Blog</h2>
+                                        {latest && <RelatedCard blog={latest[0]} />}
+                                        <hr/>
+                                    </section>
+                                    <section>
+                                        <h2>Related Blogs</h2>
+                                        {showRelatedBlogs()}
+                                        <hr/>
+                                    </section>
+                                </Col>
+                            </Row>
+                             
                         </Container>
                     </article>
                 </main>
@@ -139,7 +156,6 @@ const SingleBlog = ({blog, query}) => {
 
 SingleBlog.getInitialProps = ({query}) => {
     return singleBlog(query.slug).then(data => {
-        console.log(data)
         return {blog: data, query}
     })
 }

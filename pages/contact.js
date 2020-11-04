@@ -11,7 +11,6 @@ const contact = () => {
     return (
         <Layout>
             <Container fluid style={containerstyle}>
-
                 <ContactForm />
             </Container>
         </Layout>   

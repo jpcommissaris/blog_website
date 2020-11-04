@@ -8,23 +8,20 @@ import {useRef, useEffect} from 'react'
 const Layout = (props) => {
     const children = props.children
     const blog = props.blog
-    const childRef = useRef(null)
-
+    const noNav = props.noNav ? props.noNav : false
 
     const renderNav = () => {
-        return blog ? <BlogHeader childRef={childRef}/> : <Header childRef={childRef}/>
+        return blog ? <BlogHeader /> : <Header />
     }
 
     return(
         <React.Fragment>
-            {renderNav()}
-            <div ref= {childRef} className='content-wrapper'>
-                <div className='children'>
-                    {children}
-                </div>
-                <Footer />
+            {!noNav && renderNav()}
+            <div className='children'>
+                {children}
             </div>
-            <ScrollToTop childRef={childRef}/>
+            <Footer />
+            <ScrollToTop />
         </React.Fragment>
     ) 
 }

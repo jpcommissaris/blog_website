@@ -18,7 +18,8 @@ const hrstyle = {
 }
 
 const cardstyle= {
-    width: '100%'
+    width: '100%',
+    minWidth: '200px'
 }
 
 const timestyle= {
@@ -31,15 +32,13 @@ const timestyle= {
 
 const BlogCard = ({blog}) => {
 
-    const showBlogTags = (blog) => {
-        return blog.tags.map((t, i) => (
+    const showBlogTags = (blog) => (
+        blog.tags.map((t, i) => (
             <Link key={i} href={`/tags/${t.slug}`}>
                 <a className='btn btn-tag' > {t.name} </a>
             </Link>
         ))
-    }
-
-
+    )
 
     return (
         <article label= 'blog post'>
@@ -54,7 +53,7 @@ const BlogCard = ({blog}) => {
                             />
                         </section>
                         <section>
-                            <Card.Title className= 'text-center pl-5 pr-5 pt-4 pb-2'>
+                            <Card.Title style={{fontSize: '32px'}} className= 'text-center pl-5 pr-5 pt-4 pb-2'>
                                 {blog.title}
                             </Card.Title>
                             <hr style={hrstyle} size='30'/>
@@ -68,6 +67,7 @@ const BlogCard = ({blog}) => {
                         </section>
                         <section>
                             {showBlogTags(blog)}
+                            {console.log(blog.tags)}
                         </section>
                         <section>
                             <p style={timestyle} className='lead ml-1 mb-0'> 
@@ -76,7 +76,6 @@ const BlogCard = ({blog}) => {
                         </section>
                     </Card>
                 </Link>
-            
             </Container>
         </article>
         

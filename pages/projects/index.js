@@ -4,8 +4,8 @@ import {useRouter} from 'next/router'
 
 import Layout from '../../components/layout/Layout'
 import {useState} from 'react'
-import {listBlogsWithCategoriesAndTags} from '../../actions/blog'
-import BlogCard from '../../components/blog/BlogCard'
+import {listProjects} from '../../actions/project'
+import ProjectCard from '../../components/project/ProjectCard'
 import {API, DOMAIN} from '../../config'
 
 import Container from 'react-bootstrap/Container'
@@ -15,27 +15,27 @@ import Col from 'react-bootstrap/Col'
 
 
 const containerstyle= {
-    padding: '50px 30px',
+    padding: '20px',
     width: '100%',
-    
+    margin: 'auto',
 }
 
 
-const index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
+const index = ({projects, totalProjects, projectLimit, projectsSkip}) => {
 
     const router = useRouter()
-    const [limit, setLimit] = useState(blogsLimit)
+    const [limit, setLimit] = useState(projectLimit)
     const [skip, setSkip] = useState(0)
-    const [size, setSize] = useState(totalBlogs)
-    const [loadedBlogs, setLoadedBlogs] = useState(blogs)
+    const [size, setSize] = useState(totalProjects)
+    const [loadedProjects, setLoadedProjects] = useState(projects)
 
     const loadMore = () => {
         let toSkip = skip+limit
-        listBlogsWithCategoriesAndTags(toSkip, limit).then(data => {
+        listProjects(toSkip, limit).then(data => {
             if(data.error){
                 console.log(data.error)
             }else{
-                setLoadedBlogs([...loadedBlogs, ...data.blogs])
+                setLoadedProjects([...loadedProjects, ...data.projects])
                 setSize(data.size)
                 setSkip(toSkip) 
             }
@@ -44,20 +44,20 @@ const index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
 
     const head = () => (
         <Head>
-            <title>Programming blogs | Julian Commissaris </title>
+            <title>Programming Projects | Julian Commissaris </title>
             <meta 
                 name="description" 
-                content="blogs on programming react node next python and web development"
+                content="programming projects using react node next python and web development"
             />
 
             <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
             <meta 
                 property='og:title'
-                content={`latest web development blogs | Julian Commissaris`}
+                content={`latest programming projects | Julian Commissaris`}
             />
             <meta 
                 name="og:description" 
-                content="blogs on programming react node next python and web development"
+                content="programming projects using react node next python and web development"
             />
             <meta name="og:type" content="website"/>
             <meta name="og:url" content={`${DOMAIN}${router.pathname}`}/>
@@ -71,30 +71,24 @@ const index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
     )
 
     const body = () => (
-        <Layout blog>
+        <Layout >
             <main style={{backgroundColor: '#F8F8F8'}}>
-
                 <Container style={containerstyle}>
                     <header>
-                        {showLoadedBlogs()}   
+                        {showLoadedProjects()}   
                         {loadMoreButton()} 
                     </header>  
                 </Container>
-
             </main>
         </Layout>
     )
 
-    const showLoadedBlogs = () => (
+    const showLoadedProjects = () => (
         <Row >
-            <Col lg={6}>
-                {loadedBlogs.map((blog, i) => (
-                    i%2==0 && <BlogCard key={i} blog={blog} /> 
-                ))}
-            </Col>
-            <Col lg={6}>
-                {loadedBlogs.map((blog, i) => (
-                    i%2==1 && <BlogCard key={i} blog={blog} /> 
+            <Col md={12}>
+                {console.log(loadedProjects)}
+                {loadedProjects.map((project, i) => (
+                    <ProjectCard key={i} project={project} />
                 ))}
             </Col>
         </Row>
@@ -123,15 +117,13 @@ const index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
 
 index.getInitialProps = () => {
     let skip = 0
-    let limit = 2
-    return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
+    let limit = 3
+    return listProjects(skip, limit).then(data => {
         return {
-            blogs: data.blogs,
-            categories: data.categories,
-            tags: data.tags,
-            totalBlogs : data.size,
-            blogsLimit: limit,
-            blogsSkip: skip
+            projects: data.projects,
+            totalProjects : data.size,
+            projectsLimit: limit,
+            projectsSkip: skip
         }
     })
 }

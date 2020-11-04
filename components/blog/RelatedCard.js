@@ -13,41 +13,42 @@ const imagestyle = {
     width: '100%'
 }
 
+const timestyle= {
+    margin: '0px',
+    fontSize: '14px',
+    padding: '2px 0px',
+    fontStyle: 'oblique',
+}
+
 
 const RelatedCard = ({blog}) => {
     return (
-        <Card>
-            <section>
-                <Link href={`/blogs/${blog.slug}`}>
-                    <Card.Img
-                        className='img img-fluid' 
-                        style={imagestyle} 
+        <Link href={`/blogs/${blog.slug}`}>
+            <Card className='blog-card text-dark mt-3 mb-4'>
+                <section className='aspect-ratio-box'>
+                    <Card.Img 
+                        variant="top" 
                         src={`${API}/blogs/photo/${blog.slug}`}
-                        alt={blog.title} 
-                    />        
-                </Link>
-            </section>
-            <section>
-                <Card.Body>
-                    <Link href={`/blogs/${blog.slug}`}>
-                        <Card.Title className='h5'>
-                            {blog.title}  
-                        </Card.Title>        
-                    </Link>
-                    <Card.Text>
-                        {renderHTML(blog.excerpt)}
-                    </Card.Text>
-                </Card.Body>
-            </section>
-            <section>
-                <Card.Body>
-                    <Link href={`/blogs/${blog.slug}`}>
-                        <a className=''>read more</a>
-                    </Link>
-                    {`Post ${moment(blog.updatedAt).fromNow()} by ${blog.postedBy.name}`}
-                </Card.Body>
-            </section>
-        </Card>
+                        alt={blog.title}  
+                    />
+                </section>
+                <section>
+                    <Card.Body>
+                        <Link href={`/blogs/${blog.slug}`}>
+                            <Card.Title className='h5'>
+                                {blog.title}  
+                            </Card.Title>        
+                        </Link>
+                        <Card.Text>
+                            {renderHTML(blog.excerpt)}
+                        </Card.Text>
+                        <p style={timestyle} className='lead ml-1 mb-0'> 
+                            Published {moment(blog.updatedAt).fromNow()}
+                        </p>
+                    </Card.Body>
+                </section>
+            </Card>
+        </Link>
     )
 }
 export default RelatedCard

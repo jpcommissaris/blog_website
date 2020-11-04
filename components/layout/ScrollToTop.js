@@ -4,11 +4,10 @@ import {faArrowAltCircleUp} from '@fortawesome/free-solid-svg-icons'
 
 const ScrollToTop = (props) => {
     const scrollButton = useRef(null)
-    const childRef = props.childRef
     const [visible, setVisible] = useState(false)
 
     useEffect(() => {
-        childRef.current.addEventListener("scroll", (e) => {
+        window.addEventListener("scroll", (e) => {
             toggleVisibility();
         });
         window.addEventListener('resize', (e) => {
@@ -17,20 +16,18 @@ const ScrollToTop = (props) => {
     }, [])
 
     const toggleVisibility = () => {
-        if (childRef.current && childRef.current.scrollTop > 50 && window.innerWidth > 600) {
+        if (window.scrollY > 50 && window.innerWidth > 600) {
             setVisible(true)
-        }else {
+        }else if (window.scrollY < 40 || window.innerWidth < 590){
             setVisible(false)
         }
     }
 
     const scrollUp = () => {
-        if (scrollButton.current) {
-            childRef.current.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            })
-        }
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
     }
     const getClasses = () => {
         let visibility = visible ? 'sb-fadeIn' : 'sb-fadeOut'

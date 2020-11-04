@@ -7,7 +7,6 @@ import {useState, useEffect} from 'react'
 
 const style = {
     width: '100%',
-    height: '50px',
     borderStyle: 'solid none solid none' ,
     borderWidth: '1px',
     borderColor: 'white',
@@ -17,14 +16,13 @@ const style = {
 
 
 function Header(props) {
-    const childRef = props.childRef
     const [padding, setPadding] = useState('large')
 
     useEffect(()=> {
-        childRef.current.addEventListener('scroll', (e) => {
-            console.log(childRef.current.scrollTop)
-            let padding = childRef.current.scrollTop > 10 ? 'small' : 'large'
-            setPadding(padding)
+        window.addEventListener('scroll', (e) => {
+            console.log(window.scrollY)
+            if(window.scrollY > 45) setPadding('small')
+            else if(window.scrollY < 1) setPadding('large')
         })
     }, [])
 
@@ -45,21 +43,20 @@ function Header(props) {
     }
     
     return (
-        <Navbar className={getClasses()} expand="sm" style={style}>
+        <Navbar collapseOnSelect className={getClasses()} sticky='top' expand="md" style={style}>
+            
             <Link href="/">
                 <Navbar.Brand style={{color: 'white', fontSize: '24px'}}  href='/'>Home</Navbar.Brand>
             </Link>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className='ml-auto'>
                     {navLink('/about', 'About')}
                     {navLink('/blogs', 'Blog')}
                     {navLink('/projects', 'Projects')}
                     {navLink('/contact', 'Contact me')}
+                    <SocialMediaLinks/>
                 </Nav> 
-                <Nav>
-                <SocialMediaLinks/>
-                </Nav>
             </Navbar.Collapse>
         </Navbar>
     

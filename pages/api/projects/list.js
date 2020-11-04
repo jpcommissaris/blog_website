@@ -11,17 +11,12 @@ handler.post(async (req, res) => {
     let limit = req.body.limit ? parseInt(req.body.limit) : 3
     let skip = req.body.skip ? parseInt(req.body.skip) : 0
 
-    let blogs = await req.db.collection('blogs').find({})
+    let projects = await req.db.collection('projects').find({})
     .sort({createdAt: -1})
     .skip(skip)
     .limit(limit)
-    .project({photo: 0})
     .toArray()
-    let categories = await req.db.collection('categories').find({})
-    .toArray()
-    let tags = await req.db.collection('tags').find({})
-    .toArray()
-    res.json({blogs, categories, tags, size: blogs.length})
+    res.json({projects, size: projects.length})
 
 }); 
 

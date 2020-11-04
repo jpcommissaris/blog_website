@@ -6,7 +6,8 @@ const mediaStyle= {
     textAlign: 'center',
 }
 
-function SocialMediaLinks(){
+function SocialMediaLinks(props){
+    let color = props.color ? props.color : 'purple'
     const socialLink = (type, link) => {
         let icon = ''
         if(type=='github'){icon=faGithub}
@@ -19,7 +20,7 @@ function SocialMediaLinks(){
                 target="_blank" 
                 rel="noopener noreferrer"
             >
-                <FontAwesomeIcon className='social-icon' icon={icon} />
+                <FontAwesomeIcon style={{color}} className='social-icon' icon={icon} />
             </a>
         ) 
     }

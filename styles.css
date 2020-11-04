@@ -23,17 +23,14 @@
     padding: 0px !important;
 }
 
-.content-wrapper {
+.page-layout {
     position: relative;
     overflow-y: auto;
-    height: calc(100vh - 50px);
-    
-    
+    height: 100vh;
 }
 .children{
     position: relative;
-    min-height: calc(100vh - 100px);
-
+    min-height: calc(100vh - 50px);
 }
 
 
@@ -52,13 +49,25 @@
 /* navbar */ 
 
 .padding-large {
-    padding: 40px 90px !important ;
-    transition: padding 150ms linear !important;
+    padding: 24px 90px !important ;
+    transition: padding 250ms linear !important;
+}
+
+.padding-ex-large {
+    padding: 28px 20px !important ;
+    background-color: rgb(4,78,87,1) !important;
+    transition: padding 250ms linear !important;
+    opacity: 1 !important;
 }
 
 .padding-small {
-    padding: 26px 90px !important;
-    transition: padding 300ms linear !important;
+    padding: 0px 90px !important;
+    transition: padding 150ms linear !important;
+}
+.padding-small-opacity {
+    padding: 0px 20px !important;
+    background-color: rgb(4,78,87,0.85) !important;
+    transition: padding 200ms linear !important;
 }
 
 .underline-on-hover a{
@@ -102,14 +111,6 @@
     border-radius: 30% !important;
 }
 
-.btn-category {
-    background-color:rgb(216, 144, 238) !important;
-    font-size: 12px !important;
-    padding: 2px 5px !important;
-    margin: 2px !important;
-    border-radius: 5% !important;
-}
-
 .featured-image {
     width: 100%;
     max-height: 500px;
@@ -117,6 +118,8 @@
 }
 
 /* home page styling */
+
+
 .nav-card-link{
     color: inherit; 
     cursor: pointer;
@@ -130,16 +133,16 @@
 }
 
 .scroll-button {
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     right: 10px;
     z-index: 999;
-    background-color: rgb(49, 170, 120) !important;
     color: white; 
     border: none;
     font-size: 16px !important;
     margin: 0px;
     padding: 0px 14px;
+    background-color: rgb(49, 170, 120) !important;
     transition: background-color 300ms linear !important;
     
 }
@@ -148,14 +151,14 @@
     transition: background-color 300ms linear !important;
 }
 .sb-fadeOut {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s linear 300ms, opacity 600ms;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    transition: visibility 0s linear 300ms, opacity 600ms !important;
 }
 .sb-fadeIn {
-    visibility: visible;
-    opacity: 1;
-    transition: visibility 0s linear 0s, opacity 600ms;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: visibility 0s linear 0s, opacity 600ms !important;
 }
 
 .form-submit {
@@ -185,7 +188,7 @@
 .aspect-ratio-box::after {
     display: block;
     content: '';
-    padding-bottom: 75%;
+    padding-bottom: 66%;
 }
 .aspect-ratio-box img {
     position: absolute;
@@ -215,6 +218,70 @@
     transition: background-color 300ms linear !important;
 }
 
+.btn-load-more {
+    background-color: #ebebeb !important;
+    transition: background-color 300ms linear !important;
+    color: rgb(55, 196, 74) !important;
+    font-weight: 500 !important;
+}
+.btn-load-more:hover {
+    background-color: #d4fdb9 !important;
+    transition: background-color 300ms linear !important;
+}
+
+.blog-body p {
+    font-size: 18px;
+}
+
+.btn-hamburger {
+    font-size: 24px !important;
+    cursor: pointer;
+    color: white;
+    transition: color 300ms linear !important;
+    z-index: 100 !important;
+}
+.btn-hamburger:hover {
+    color: orange;
+    transition: color 300ms linear !important;
+}
+
+.btn-exit {
+    font-size: 36px !important;
+    cursor: pointer;
+    float: right;
+    font-weight: 200 !important;
+    color: black;
+    transition: color 300ms linear !important;
+    z-index: 100 !important;
+}
+.btn-exit:hover {
+    color: orange;
+    transition: color 300ms linear !important;
+}
+
+.sb-slideIn {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    transition: all 300ms linear !important;
+}
+
+.sb-slideOut {
+    transform: translateX(-100%) !important;
+    opacity: 0 !important;
+    transition: all 300ms linear !important;
+}
+
+
+.sidebar {
+    width: 400px !important;
+    padding: 20px !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    background-color: whitesmoke;
+    height: 100vh;
+    z-index: 900;
+}
 
 
 
