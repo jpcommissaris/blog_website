@@ -19,7 +19,9 @@ const hrstyle = {
 
 const cardstyle= {
     width: '100%',
-    minWidth: '200px'
+    minWidth: '200px',
+    backgroundColor: 'white',
+    border: 'solid black 1px',
 }
 
 const timestyle= {
@@ -42,40 +44,44 @@ const BlogCard = ({blog}) => {
 
     return (
         <article label= 'blog post'>
-            <Container fluid className="lead pb-4">
-                <Link href={`/blogs/${blog.slug}`}>
-                    <Card className="shadow rounded blog-card text-dark" style={cardstyle}>
-                        <section className='aspect-ratio-box'>
+            <Container fluid className="pl-3 pr-3 lead pb-4">
+                <Card className="rounded blog-card text-dark" style={cardstyle}>
+                    <section className='aspect-ratio-box'>
+                        <Link href={`/blogs/${blog.slug}`}>
                             <Card.Img 
                                 variant="top" 
                                 src={`${API}/blogs/photo/${blog.slug}`}
                                 alt={blog.title}  
                             />
-                        </section>
-                        <section>
-                            <Card.Title style={{fontSize: '32px'}} className= 'text-center pl-5 pr-5 pt-4 pb-2'>
+                        </Link>
+                    </section>
+                    <section>
+                        <Link href={`/blogs/${blog.slug}`}>
+                            <Card.Title style={{fontSize: '32px'}} className= 'blog-card-link text-center ml-2 mr-2 mt-4 mb-2'>
                                 {blog.title}
                             </Card.Title>
-                            <hr style={hrstyle} size='30'/>
-                        </section>
-                        <section>
-                            <Card.Body>
-                                <Card.Text>
-                                    {renderHTML(blog.excerpt)}
-                                </Card.Text>
-                            </Card.Body>
-                        </section>
-                        <section>
-                            {showBlogTags(blog)}
-                            {console.log(blog.tags)}
-                        </section>
-                        <section>
-                            <p style={timestyle} className='lead ml-1 mb-0'> 
-                                Published {moment(blog.updatedAt).fromNow()}
-                            </p>
-                        </section>
-                    </Card>
-                </Link>
+                        </Link>
+                        <hr style={hrstyle} size='30'/>
+                        
+                    </section>
+                    <section>
+                        <Card.Body>
+                            <Card.Text>
+                                {renderHTML(blog.excerpt)}
+                            </Card.Text>
+                        </Card.Body>
+                    </section>
+                    <section>
+                        {showBlogTags(blog)}
+                        {console.log(blog.tags)}
+                    </section>
+                    <section>
+                        <p style={timestyle} className='lead ml-1 mb-0'> 
+                            Published {moment(blog.updatedAt).fromNow()}
+                        </p>
+                    </section>
+                </Card>
+
             </Container>
         </article>
         

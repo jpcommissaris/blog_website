@@ -21,34 +21,32 @@ const timestyle= {
 }
 
 
-const RelatedCard = ({blog}) => {
-    return (
-        <Link href={`/blogs/${blog.slug}`}>
-            <Card className='blog-card text-dark mt-3 mb-4'>
-                <section className='aspect-ratio-box'>
-                    <Card.Img 
-                        variant="top" 
-                        src={`${API}/blogs/photo/${blog.slug}`}
-                        alt={blog.title}  
-                    />
-                </section>
-                <section>
-                    <Card.Body>
-                        <Link href={`/blogs/${blog.slug}`}>
-                            <Card.Title className='h5'>
-                                {blog.title}  
-                            </Card.Title>        
-                        </Link>
-                        <Card.Text>
-                            {renderHTML(blog.excerpt)}
-                        </Card.Text>
-                        <p style={timestyle} className='lead ml-1 mb-0'> 
-                            Published {moment(blog.updatedAt).fromNow()}
-                        </p>
-                    </Card.Body>
-                </section>
-            </Card>
-        </Link>
-    )
-}
+const RelatedCard = ({blog}) => (
+    <Card className='blog-card text-dark mt-3 mb-4'>
+        <section className='aspect-ratio-box'>
+            <Link href={`/blogs/${blog.slug}`}>
+                <Card.Img 
+                    variant="top" 
+                    src={`${API}/blogs/photo/${blog.slug}`}
+                    alt={blog.title}  
+                />
+            </Link>
+        </section>
+        <section>
+            <Card.Body>
+                <Link href={`/blogs/${blog.slug}`}>
+                    <Card.Title className='blog-card-link h5'>
+                        {blog.title}  
+                    </Card.Title>        
+                </Link>
+                <Card.Text>
+                    {renderHTML(blog.excerpt)}
+                </Card.Text>
+                <p style={timestyle} className='lead ml-1 mb-0'> 
+                    Published {moment(blog.updatedAt).fromNow()}
+                </p>
+            </Card.Body>
+        </section>
+    </Card>
+)
 export default RelatedCard

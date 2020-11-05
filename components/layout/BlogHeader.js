@@ -4,7 +4,9 @@ import {APP_NAME} from '../../config.js'
 import Link from 'next/link'
 import SocialMediaLinks from './SocialMediaLinks'
 import BlogSidebar from './BlogSidebar';
+import SearchBar from './SearchBar';
 import {useState, useEffect} from 'react'
+import {searchBlog} from '../../actions/blog'
 
 import Container from 'react-bootstrap/Container'
 import Row from  'react-bootstrap/Row'
@@ -28,8 +30,9 @@ const h1style = {
 function BlogHeader(props) {
 
     const [padding, setPadding] = useState('ex-large')
+    
 
-    useEffect(()=> {
+    useEffect(() => {
         window.addEventListener('scroll', (e) => {
             if(window.scrollY > 45) setPadding('small-opacity')
             else if(window.scrollY < 1) setPadding('ex-large')
@@ -60,10 +63,12 @@ function BlogHeader(props) {
                         <BlogSidebar />
                     </Col>
                     <Col sm='6' className= 'text-center align-self-center'>
-                        <Navbar.Brand style={{color: 'white', fontSize: '32px', margin: '0px'}} >Julian's Tech Blog</Navbar.Brand>
+                        <Link href='/blogs'>
+                            <Navbar.Brand href='/blogs' style={{color: 'white', fontSize: '32px', margin: '0px'}} >Julian's Tech Blog</Navbar.Brand>
+                        </Link>
                     </Col>
                     <Col sm='3' className= 'align-self-center'>
-                        <SocialMediaLinks color='white'/>
+                        <SearchBar /> 
                     </Col>
                 </Nav> 
             </Container>

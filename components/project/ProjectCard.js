@@ -11,9 +11,9 @@ import Card from 'react-bootstrap/Card'
 
 const hrstyle = {
     backgroundColor: 'darkgreen',
-    height: '2px',
-    width: '50px',
-    margin: '0 auto',
+    height: '3px',
+    width: '22px',
+    margin: '0',
     textAlign: 'center'
 }
 
@@ -21,29 +21,37 @@ const hrstyle = {
 const timestyle= {
     margin: '0px',
     fontSize: '14px',
-    padding: '2px 4px',
     fontStyle: 'oblique',
 }
 
 
+
 const ProjectCard = ({project}) => {
+
+    const renderLink = (web) => {
+        let link = project.website && web ? project.website : project.github
+        return (
+            <a href={link} target='_blank'>
+                <h1 style={{fontSize: '32px'}} className= 'blog-card-link '>
+                    {web ? project.title : <span style={timestyle}>GitHub link</span>}
+                </h1>
+            </a>
+        )
+    }
 
     return (
         <article label= 'project'>
             <Container fluid className="lead pb-4">
                 <section>
-                    <h1 className= ' pt-4 pb-2'>
-                        {project.title}
-                    </h1>
-                    <hr style={hrstyle} size='30'/>
+                    {renderLink(true)}
+                    <hr style={hrstyle}/>
                 </section>
                 <section>
-                    <p> {renderHTML(project.description)}</p>
+                    <p className='pt-2 mb-0'> {renderHTML(project.description)}</p>
                 </section>
                 <section>
-                    <p style={timestyle} className='lead ml-1 mb-0'> 
-                        Published {moment(project.updatedAt).fromNow()}
-                    </p>
+                    {renderLink(false)}
+                    <hr/>
                 </section>
             </Container>
         </article>

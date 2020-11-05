@@ -74,7 +74,7 @@ const index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
         <Layout blog>
             <main style={{backgroundColor: '#F8F8F8'}}>
 
-                <Container style={containerstyle}>
+                <Container fluid='lg' style={containerstyle}>
                     <header>
                         {showLoadedBlogs()}   
                         {loadMoreButton()} 
@@ -86,13 +86,13 @@ const index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
     )
 
     const showLoadedBlogs = () => (
-        <Row >
-            <Col lg={6}>
+        <Row>
+            <Col md={6}>
                 {loadedBlogs.map((blog, i) => (
                     i%2==0 && <BlogCard key={i} blog={blog} /> 
                 ))}
             </Col>
-            <Col lg={6}>
+            <Col md={6}>
                 {loadedBlogs.map((blog, i) => (
                     i%2==1 && <BlogCard key={i} blog={blog} /> 
                 ))}

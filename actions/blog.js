@@ -62,6 +62,21 @@ export const listBlogs = () => {
     .catch(err => console.log(err))
 }
 
+export const searchBlog = (search) => {
+    return fetch(`${API}/blogs/search`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({search: search})
+    })
+    .then(res => {
+        return res.json()
+    })
+    .catch(err => console.log(err))
+}
+
 
 
 
