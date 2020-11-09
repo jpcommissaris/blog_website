@@ -36,12 +36,12 @@ const SearchBar = () => {
     }, [open])
 
     const renderSearchedBlogs = () => (
-        <Col md={12} className='pt-4'>
+        <Col md={12} className='pt-4' style={{paddingLeft: '0px'}}>
             {searchResult.length !== 0 ? 
             searchResult.map((blog, i) => (
                 <BlogCard key={i} blog={blog} /> 
             )) : 
-            <p className='text-center'> No Blogs Match Query </p>}
+            <p className='text-center'> No Blogs Match Query! </p>}
         </Col>
     )
 
@@ -91,7 +91,7 @@ const SearchBar = () => {
                        <Col md='12' className='input-group mt-3' >
                             <input 
                                 type='text' 
-                                placeholder=' Search something'
+                                placeholder='Search something'
                                 style={{width: '85%'}}
                                 maxLength='24'
                                 onKeyUp= {(e) => handleSearchInput(e)}
