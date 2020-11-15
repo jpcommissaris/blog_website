@@ -55,7 +55,7 @@ function Header(props) {
                     {navLink('/blogs', 'Blog')}
                     {navLink('/projects', 'Projects')}
                     {navLink('/contact', 'Contact me')}
-                    <SocialMediaLinks/>
+                    <SocialMediaLinks color='white'/>
                 </Nav> 
             </Navbar.Collapse>
         </Navbar>

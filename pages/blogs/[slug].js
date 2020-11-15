@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import renderHTML from 'react-render-html'
+import parse from 'html-react-parser'
 import moment from 'moment' 
 import {useEffect, useState} from 'react'
 
@@ -128,7 +128,9 @@ const SingleBlog = ({blog, query}) => {
                                         />
                                     </section>
                                     <section className='blog-body'>
-                                        {renderHTML(blog.body)}
+                                        <div>
+                                            {parse(blog.body)}
+                                        </div>
                                     </section>
                                 </Col>
                                 <Col md='4' style={{padding: '60px 10px 10px 50px'}}>

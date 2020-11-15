@@ -72,12 +72,8 @@ const BlogCard = ({blog}) => {
                         </Card.Body>
                     </section>
                     <section>
-                        {showBlogTags(blog)}
-                        {console.log(blog.tags)}
-                    </section>
-                    <section>
                         <p style={timestyle} className='lead ml-1 mb-0'> 
-                            Published {moment(blog.updatedAt).fromNow()}
+                            Published {moment(blog.createdAt).fromNow()}
                         </p>
                     </section>
                 </Card>

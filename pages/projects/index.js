@@ -117,7 +117,7 @@ const index = ({projects, totalProjects, projectLimit, projectsSkip}) => {
 
 index.getInitialProps = () => {
     let skip = 0
-    let limit = 3
+    let limit = 5
     return listProjects(skip, limit).then(data => {
         return {
             projects: data.projects,

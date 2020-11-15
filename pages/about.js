@@ -22,7 +22,6 @@ const about = () => {
                 <AboutHeader />
                 <AboutImage /> 
                 <AboutMe/>
-                <ResumeLink /> 
             </Container>           
         </Layout>   
     )

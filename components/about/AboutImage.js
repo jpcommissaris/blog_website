@@ -1,4 +1,5 @@
 import Image from 'react-bootstrap/Image'
+import ResumeLink from './ResumeLink'
 
 
 const imagestyle = {
@@ -11,8 +12,8 @@ const imagestyle = {
 const AboutImage = () => {
 
     return (
-        <div >
-                <Image src='static/aboutprofile.png' width='250px' style={imagestyle}/>
+        <div style={imagestyle}>
+            <Image src='static/aboutprofile.png' width='250px' />
         </div>
     )
 }

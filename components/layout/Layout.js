@@ -20,9 +20,11 @@ const Layout = (props) => {
             <div className='children'>
                 {children}
             </div>
-            <Footer />
+            
             <ScrollToTop />
         </React.Fragment>
     ) 
 }
 export default Layout
+
+// <Footer />

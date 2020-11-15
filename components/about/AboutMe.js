@@ -13,28 +13,7 @@ const AboutMe = () => {
     return (
         <React.Fragment >
                 <p >
-                    this is filler text that should demonstrate margins
-                    this is filler text that should demonstrate margins
-                    this is filler text that should demonstrate margins
-                    this is filler text that should demonstrate margins
-                    this is filler text that should demonstrate margins
-                    this is filler text that should demonstrate margins
-                    this is filler text that should demonstrate margins
-                    this is filler text that should demonstrate margins
-                    this is filler text that should demonstrate margins
-                    this is filler text that should demonstrate margins
-                    this is filler text that should demonstrate margins
-                    this is filler text that should demonstrate margins
-
-                    this is filler text that should demonstrate marginsthis is filler text that should demonstrate margins
-                    this is filler text that should demonstrate margins
-                    this is filler text that should demonstrate margins
-
-                    this is filler text that should demonstrate margins
-
-                    this is filler text that should demonstrate marginsthis is filler text that should demonstrate margins
-                    v
-                    this is filler text that should demonstrate margins
+                    Hey I'm Julian!
 
                 </p>
         </React.Fragment>

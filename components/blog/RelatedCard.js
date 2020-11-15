@@ -43,7 +43,7 @@ const RelatedCard = ({blog}) => (
                     {renderHTML(blog.excerpt)}
                 </Card.Text>
                 <p style={timestyle} className='lead ml-1 mb-0'> 
-                    Published {moment(blog.updatedAt).fromNow()}
+                    Published {moment(blog.createdAt).fromNow()}
                 </p>
             </Card.Body>
         </section>

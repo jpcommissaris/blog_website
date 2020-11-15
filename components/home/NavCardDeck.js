@@ -22,7 +22,7 @@ const NavCardDeck = () => {
                 />
                 <NavCard 
                     title='Blog'
-                    link='/blog'
+                    link='/blogs'
                     body='Check out my Blog!'
                 />
        </CardDeck>

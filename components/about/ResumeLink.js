@@ -12,7 +12,7 @@ const ResumeLink = () => {
 
     return (
         <React.Fragment >
-                my resume
+            <a>resume</a>
         </React.Fragment>
     )
 }
