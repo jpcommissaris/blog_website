@@ -1,5 +1,4 @@
 import Header from './Header'
-import BlogHeader from './BlogHeader'
 import Footer from './Footer'
 import Container from 'react-bootstrap/Container';
 import ScrollToTop from './ScrollToTop'
@@ -10,13 +9,13 @@ const Layout = (props) => {
     const blog = props.blog
     const noNav = props.noNav ? props.noNav : false
 
-    const renderNav = () => {
-        return blog ? <BlogHeader /> : <Header />
+    const renderHeader = () => {
+        return  blog ? <Header blog/> : <Header />
     }
 
     return(
         <React.Fragment>
-            {!noNav && renderNav()}
+            {renderHeader() }
             <div className='children'>
                 {children}
             </div>

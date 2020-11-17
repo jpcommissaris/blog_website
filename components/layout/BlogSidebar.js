@@ -65,9 +65,9 @@ const BlogSidebar = () => {
                     </Row>
                     <Row>
                         <Col md='12' className= ' pt-3 text-center'>
-                            {navLink('BLOG', '/blogs')}
-                            {navLink('HOME', '/')}
+                            {navLink('BLOG', '/')}
                             {navLink('ABOUT', '/about')}
+                            {navLink('PROJECTS', '/projects')}
                             {navLink('CONTACT ME', '/contact')}
                         </Col>
                     </Row>

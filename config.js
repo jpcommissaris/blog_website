@@ -6,5 +6,5 @@ export const API = publicRuntimeConfig.API
 
 export const DOMAIN = publicRuntimeConfig.DOMAIN
 
-export const MONGO = publicRuntimeConfig.MONGO
+export const MONGO = publicRuntimeConfig.MONGO_DB
 

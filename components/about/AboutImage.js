@@ -13,7 +13,7 @@ const AboutImage = () => {
 
     return (
         <div style={imagestyle}>
-            <Image src='static/aboutprofile.png' width='250px' />
+            <Image src='/aboutprofile.png' width='250px' />
         </div>
     )
 }

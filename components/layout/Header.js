@@ -3,66 +3,65 @@ import Nav from 'react-bootstrap/Nav';
 import {APP_NAME} from '../../config.js'
 import Link from 'next/link'
 import SocialMediaLinks from './SocialMediaLinks'
+import BlogSidebar from './BlogSidebar';
+import SearchBar from './SearchBar';
 import {useState, useEffect} from 'react'
+import {searchBlog} from '../../actions/blog'
+
+import Container from 'react-bootstrap/Container'
+import Row from  'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
+
 
 const style = {
     width: '100%',
     borderStyle: 'solid none solid none' ,
     borderWidth: '1px',
     borderColor: 'white',
-    backgroundColor: 'rgb(34,42,53)'
 } 
 
+const h1style = {
+    padding: '0px',
+    maring: '0px'
+}
 
 
-function Header(props) {
-    const [padding, setPadding] = useState('large')
+function Header({blog}) {
 
-    useEffect(()=> {
+    const [padding, setPadding] = useState('ex-large')
+    
+
+    useEffect(() => {
         window.addEventListener('scroll', (e) => {
-            console.log(window.scrollY)
-            if(window.scrollY > 45) setPadding('small')
-            else if(window.scrollY < 1) setPadding('large')
+            if(window.scrollY > 45) setPadding('small-opacity')
+            else if(window.scrollY < 1) setPadding('ex-large')
         })
     }, [])
 
     const getClasses = () => {
         return `padding-${padding}`
     }
-
-    const navLink = (link, text) => {
-        return(
-            <React.Fragment>
-                <Link href={link}>
-                    <div className='underline-on-hover pl-2 pr-2 font-weight-bold'>
-                        <a href={link}> {text}</a>
-                    </div>
-                </Link>
-            </React.Fragment>
-        )
-    }
     
     return (
-        <Navbar collapseOnSelect className={getClasses()} sticky='top' expand="md" style={style}>
-            
-            <Link href="/">
-                <Navbar.Brand style={{color: 'white', fontSize: '24px'}}  href='/'>Home</Navbar.Brand>
-            </Link>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className='ml-auto'>
-                    {navLink('/about', 'About')}
-                    {navLink('/blogs', 'Blog')}
-                    {navLink('/projects', 'Projects')}
-                    {navLink('/contact', 'Contact me')}
-                    <SocialMediaLinks color='white'/>
+        <Navbar className={getClasses()} sticky='top' style={style}>
+            <Container fluid>
+                <Nav style={{width: '100%'}} className='mx-auto'>
+                    <Col sm='3' className= 'align-self-center'>
+                        <BlogSidebar />
+                    </Col>
+                    <Col sm='6' className= 'text-center align-self-center'>
+                        <Link href='/'>
+                            <Navbar.Brand href='/' style={{color: 'white', fontSize: '32px', margin: '0px'}} >Julian's Tech Blog</Navbar.Brand>
+                        </Link>
+                    </Col>
+                    <Col sm='3' className= 'align-self-center'>
+                        {blog && <SearchBar />}
+                    </Col>
                 </Nav> 
-            </Navbar.Collapse>
+            </Container>
         </Navbar>
     
     )
 }
 export default Header
-
-
-
