@@ -73,9 +73,9 @@ const BlogSidebar = () => {
                     </Row>
                     <Row>
                         <Col md='12' className= 'pt-3'>
-                            <p>Hey yall, I'm Julian and this is my tech blog </p>
-                            <p>I'm a college student at UCSB that enjoys learning and engaing in the tech world. In this blog, I plan to post projects, book reviews, and my thouhgts on trending tech topics </p>
-                            <p>If you have any questions, comments or thoughts my content, feel free to contact me.</p>
+                            <p>Hey yall, I'm Julian and this is my tech blog. </p>
+                            <p>I'm a college student at UCSB that enjoys learning and engaing in the tech world. In this blog, I plan to post projects, book reviews, and my thouhgts on trending tech topics. </p>
+                            <p>If you have any questions, comments or thoughts, feel free to contact me.</p>
                             <SocialMediaLinks color='black'/>
                         </Col>
                     </Row>
