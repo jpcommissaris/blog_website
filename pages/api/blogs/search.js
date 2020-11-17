@@ -1,10 +1,11 @@
 import nextConnect from 'next-connect';
 import connectdb from '../../../actions/database';
-import {ObjectId} from 'mongodb'
+import cors from '../../../actions/cors';
 
 const handler = nextConnect();
 
 handler.use(connectdb);
+handler.use(cors)
 
 handler.post(async (req, res) => {
     const search = req.body.search

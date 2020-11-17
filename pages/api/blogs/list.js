@@ -1,9 +1,11 @@
 import nextConnect from 'next-connect';
-import dbconnect from '../../../actions/database';
+import connectdb from '../../../actions/database';
+import cors from '../../../actions/cors';
 
 const handler = nextConnect();
 
-handler.use(dbconnect);
+handler.use(connectdb);
+handler.use(cors)
 
 handler.post(async (req, res) => {
 

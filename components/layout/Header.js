@@ -33,11 +33,14 @@ function Header({blog}) {
     
 
     useEffect(() => {
-        window.addEventListener('scroll', (e) => {
-            if(window.scrollY > 45) setPadding('small-opacity')
-            else if(window.scrollY < 1) setPadding('ex-large')
-        })
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
     }, [])
+
+    const handleScroll = (e) => {
+        if(window.scrollY > 45) setPadding('small-opacity')
+        else if(window.scrollY < 1) setPadding('ex-large')
+    }
 
     const getClasses = () => {
         return `padding-${padding}`

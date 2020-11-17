@@ -29,9 +29,9 @@ const SearchBar = () => {
     useEffect(() => {
         if(open){
             window.addEventListener('click', handleClick)
-            return () => {
-                window.removeEventListener('click', handleClick);
-            }
+        }
+        return () => {
+            window.removeEventListener('click', handleClick);
         }
     }, [open])
 
