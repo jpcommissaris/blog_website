@@ -4,7 +4,7 @@ import nextConnect from 'next-connect';
 
 async function cors(req, res, next) {
   // options here: https://github.com/expressjs/cors#configuration-options
-  res.setHeader('Access-Control-Allow-Origin', 'http://juliancommissaris.com/')
+  res.setHeader('Access-Control-Allow-Origin', process.env.DOMAIN)
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, HEAD');
   res.setHeader('Access-Control-Allow-Headers', 'Authorization');
 

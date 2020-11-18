@@ -7,8 +7,8 @@ module.exports = {
         }
     }),
     publicRuntimeConfig: {
-        API: 'http://localhost:3000/api',
-        DOMAIN: 'http://localhost:3000',
+        API: process.env.API,
+        DOMAIN: process.env.DOMAIN,
         MONGO_DB: process.env.MONGO_DB
     },
     
