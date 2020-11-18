@@ -1,15 +1,13 @@
-import NextCors from 'nextjs-cors'
+import Cors from 'cors'
 import nextConnect from 'next-connect';
 
 
 async function cors(req, res, next) {
   // options here: https://github.com/expressjs/cors#configuration-options
-  await NextCors(req, res, {
-    // Options
-    methods: ['GET', 'POST', 'HEAD'],
-    origin: ['http://localhost:3000/', 'http://juliancommissaris.com/'],
-    optionsSuccessStatus: 200,
-  });
+  res.setHeader('Access-Control-Allow-Origin', 'http://juliancommissaris.com/')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, HEAD');
+  res.setHeader('Access-Control-Allow-Headers', 'Authorization');
+
   return next()
 }
 

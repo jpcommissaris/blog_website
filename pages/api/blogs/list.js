@@ -8,7 +8,10 @@ handler.use(connectdb);
 handler.use(cors)
 
 handler.post(async (req, res) => {
-
+    
+    res.setHeader('Access-Control-Allow-Origin', 'http://juliancommissaris.com/')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, HEAD');
+    res.setHeader('Access-Control-Allow-Headers', 'Authorization');
     
     let limit = req.body.limit ? parseInt(req.body.limit) : 3
     let skip = req.body.skip ? parseInt(req.body.skip) : 0

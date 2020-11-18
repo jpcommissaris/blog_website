@@ -8,7 +8,7 @@ class MyDocument extends Document {
         <Head>
             <meta charSet="UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-            <link rel="icon" href="static/website_logo.png"></link> 
+            <link rel="icon" href="/website_logo.png"></link> 
         </Head>
         <body>
           <Main />
