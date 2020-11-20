@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
+import {sendMail} from '../../actions/contact'
 
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -30,15 +31,20 @@ function ContactForm(props) {
     const sendFormAsEmail = () => {
         if(name==''){
             setMessage({type: 'warning', content: 'name is required'}) 
-            return false
         }else if(email==''){
             setMessage({type: 'warning', content: 'email is required'}) 
         }else{
-            setName('')
-            setEmail('')
-            setSubject('')
-            setBody('')
-            setMessage({type: 'success', content: 'sent as an email'})
+            sendMail({name, email, subject, body}).then(({error, info}) => {
+                if(error){
+                    setMessage({type: 'danger', content: 'error sending email'})
+                }else{
+                    setName('')
+                    setEmail('')
+                    setSubject('')
+                    setBody('')
+                    setMessage({type: 'success', content: 'sent as an email'})
+                }
+            })
         }
     }
 

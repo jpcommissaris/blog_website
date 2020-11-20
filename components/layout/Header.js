@@ -50,15 +50,15 @@ function Header({blog}) {
         <Navbar className={getClasses()} sticky='top' style={style}>
             <Container fluid>
                 <Nav style={{width: '100%'}} className='mx-auto'>
-                    <Col sm='3' className= 'align-self-center'>
+                    <Col sm='3' className= 'align-self-center' style={{padding: '0px'}}>
                         <BlogSidebar />
                     </Col>
-                    <Col sm='6' className= 'text-center align-self-center'>
+                    <Col sm='6' className= 'text-center align-self-center' style={{padding: '0px'}}>
                         <Link href='/'>
                             <Navbar.Brand href='/' style={{color: 'white', fontSize: '32px', margin: '0px'}} >Julian's Tech Blog</Navbar.Brand>
                         </Link>
                     </Col>
-                    <Col sm='3' className= 'align-self-center'>
+                    <Col sm='3' className= 'align-self-center' style={{padding: '0px'}}>
                         {blog && <SearchBar />}
                     </Col>
                 </Nav> 

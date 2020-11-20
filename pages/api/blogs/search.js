@@ -9,7 +9,6 @@ handler.use(cors)
 
 handler.post(async (req, res) => {
     const search = req.body.search
-    console.log(search)
     let doc = await req.db.collection('blogs')
     .find({ $text: { $search: search } })
     .limit(5)

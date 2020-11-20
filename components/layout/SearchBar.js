@@ -79,7 +79,7 @@ const SearchBar = () => {
     }
 
     return (
-            <Container fluid>
+            <Container >
                 {renderButton()}
                 <div ref={searchbar} className={getClasses()}>
                     <Row>

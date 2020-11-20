@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faFacebook, faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons'
+import {faTwitter, faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons'
 
 const mediaStyle= {
     padding: '0px 12px',
@@ -11,7 +11,7 @@ function SocialMediaLinks(props){
     const socialLink = (type, link) => {
         let icon = ''
         if(type=='github'){icon=faGithub}
-        else if(type=='facebook'){icon=faFacebook}
+        else if(type=='twitter'){icon=faTwitter}
         else if(type=='linkedin'){icon=faLinkedin}
         return (
             <a 
@@ -26,9 +26,9 @@ function SocialMediaLinks(props){
     }
     return (
         <div style={mediaStyle} >
-            {socialLink('facebook', "https://www.facebook.com/julian.commissaris.5")}
+            {socialLink('twitter', "https://twitter.com/jpcommissaris")}
             {socialLink('github', "https://github.com/jpcommissaris")}
-            {socialLink('linkedin', "https://www.linkedin.com/in/julian-c-87a374177/")}
+            {socialLink('linkedin', "https://www.linkedin.com/in/julian-commissaris/")}
             
         </div>
     )

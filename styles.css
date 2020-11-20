@@ -2,8 +2,10 @@
 *{
     box-sizing: border-box;
 }
+
 body {
     min-height: 110vh;
+    min-width: 100vw;
 }
 
 .shadow-1 {
@@ -53,18 +55,18 @@ body {
 
 
 .padding-ex-large {
-    padding: 28px 20px !important ;
+    padding: 28px 0 !important ;
     background-color: rgb(4,78,87,1) !important;
     transition: padding 250ms linear !important;
     opacity: 1 !important;
 }
 
 .padding-small {
-    padding: 0px 90px !important;
+    padding: 0px 0 !important;
     transition: padding 150ms linear !important;
 }
 .padding-small-opacity {
-    padding: 0px 20px !important;
+    padding: 0px 0 !important;
     background-color: rgb(4,78,87,0.85) !important;
     transition: padding 200ms linear !important;
 }
@@ -267,7 +269,6 @@ body {
     z-index: 900;
     overflow: auto;
 }
-
 
 
 

@@ -4,7 +4,7 @@ import ResumeLink from './ResumeLink'
 
 const imagestyle = {
     float: 'left',
-    margin: '0px 20px 0px 0px ',
+    margin: '0px 20px 0px -5px ',
     padding: '0px'
 }
 
