@@ -123,7 +123,7 @@ const index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
 
 index.getInitialProps = () => {
     let skip = 0
-    let limit = 2
+    let limit = 4
     return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
         return {
             blogs: data.blogs,
