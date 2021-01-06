@@ -46,8 +46,8 @@ const ProjectCard = ({project}) => {
                     {renderLink(true)}
                     <hr style={hrstyle}/>
                 </section>
-                <section>
-                    <p className='pt-2 mb-0'> {renderHTML(project.description)}</p>
+                <section className='pt-2 mb-0'> 
+                    {renderHTML(project.description)}
                 </section>
                 <section>
                     {renderLink(false)}

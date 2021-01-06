@@ -1,20 +1,31 @@
 import Header from './Header'
-import Footer from './Footer'
-import Container from 'react-bootstrap/Container';
 import ScrollToTop from './ScrollToTop'
-import {useRef, useEffect} from 'react'
+import Head from 'next/head'
 
 const Layout = (props) => {
     const children = props.children
     const blog = props.blog
-    const noNav = props.noNav ? props.noNav : false
+    const title = 'programming blogs | Julian Commissaris'
+    const description = 'blogs on programming react node next python and web development'
 
-    const renderHeader = () => {
-        return  blog ? <Header blog/> : <Header />
-    }
+    const renderMeta = () => (
+        <Head>
+            <meta charSet="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+            <meta property='og:title' content={title} />
+            <meta name="og:description" content={description} />
+            <meta name="og:site_name" content={'juliancommissaris'}/>
+        </Head>
+    )
+
+    const renderHeader = () => (
+        blog ? <Header blog/> : <Header />
+    )
 
     return(
         <React.Fragment>
+            
+            {renderMeta()}
             {renderHeader() }
             <div className='children'>
                 {children}

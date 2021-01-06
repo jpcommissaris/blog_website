@@ -23,7 +23,7 @@ const SearchBar = () => {
 
     const [open, setOpen] = useState(false)
     const [search, setSearch] = useState('')
-    const [searchResult, setSearchResult] = useState([])
+    const [searchResult, setSearchResult] = useState('')
     const searchbar = useRef(null)
 
     useEffect(() => {
@@ -41,7 +41,7 @@ const SearchBar = () => {
             searchResult.map((blog, i) => (
                 <BlogCard key={i} blog={blog} /> 
             )) : 
-            <p className='text-center'> No Blogs Match Query! </p>}
+            searchResult && <p className='text-center'> No Blogs Match Query! </p>}
         </Col>
     )
 

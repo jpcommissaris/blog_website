@@ -10,13 +10,12 @@ handler.use(cors)
 
 handler.post(async (req, res) => {
     const {_id, tags} = req.body.blog
-    console.log(_id, ObjectId(_id))
     let tagsobjID = []
     tags.forEach((tag) =>{
         tagsobjID.push(ObjectId(tag))
     })
     let doc = await req.db.collection('blogs')
-    .find({_id: {$ne: ObjectId(_id)}, tags: {$in: tagsobjID}})
+    .find({$query: {_id: {$ne: ObjectId(_id)}}, $orderby: {$in: tagsobjID}})
     .limit(3)
     .project({photo: 0})
     .toArray()

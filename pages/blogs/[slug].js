@@ -3,6 +3,7 @@ import Link from 'next/link'
 import parse from 'html-react-parser'
 import moment from 'moment' 
 import {useEffect, useState} from 'react'
+import MetaData from '../../components/layout/MetaData'
 
 import Layout from '../../components/layout/Layout'
 import RelatedCard from '../../components/blog/RelatedCard'
@@ -51,7 +52,6 @@ const SingleBlog = ({blog, query}) => {
 
     const loadLatest = () => {
         getLatestBlog({blog}).then(data => {
-            console.log(data)
             setLatest(data)
         })
     }
@@ -101,14 +101,14 @@ const SingleBlog = ({blog, query}) => {
 
 
     return (
-        <React.Fragment>
-            {head()}
-            <Layout blog >
+        <Layout blog >
+            
+            <MetaData title={`${blog.title}| Julian Commissaris`} description={blog.description} />   
                 <main>
                     <article> 
                         <Container fluid style={containerStyle}>
                             <Row>
-                                <Col md='8'>
+                                <Col lg='8'>
                                     <section>
                                         <hr/>
                                         <h1 className='font-weight-bold'> {blog.title} </h1>
@@ -133,7 +133,7 @@ const SingleBlog = ({blog, query}) => {
                                         </div>
                                     </section>
                                 </Col>
-                                <Col md='4' style={{padding: '60px 10px 10px 50px'}}>
+                                <Col lg='4'  style={{padding: '60px 10px 10px 50px'}}>
                                     <section>
                                         <h2>Check Out My Latest Blog</h2>
                                         {latest && <RelatedCard blog={latest[0]} />}
@@ -151,7 +151,6 @@ const SingleBlog = ({blog, query}) => {
                     </article>
                 </main>
             </Layout>
-        </React.Fragment> 
     )
 
 }

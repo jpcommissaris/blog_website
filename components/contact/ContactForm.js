@@ -3,6 +3,7 @@ import {sendMail} from '../../actions/contact'
 
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
@@ -75,51 +76,50 @@ function ContactForm(props) {
     
 
     return (
-        <React.Fragment>
-        
-        <div className='form-wrapper' >
-            <Form className= 'shadow' style={{backgroundColor: 'white'}}>
-                <Row style={{ margin: '0px', backgroundColor: '#b2e8a2',}}>
-                    <Col sm={12}>
-                        <h1 style={header}> Contact Me </h1> 
-                    </Col>
-                </Row>
+            <Form  className='form-wrapper'>
+                <p className='h2 mb-0' style={{paddingLeft: '20px'}}>
+                Contact Me
+                </p>  
+            
+            
             
             <div style={{padding: '20px'}}>
                 <Form.Group as={Row}>
-                    <Form.Label column sm={3}> Your Name </Form.Label>
-                    <Col sm={12}>
-                        <Form.Control value={name} onChange={(event) => handleChangeToForm(event, 'name')}/>
+                    <Col md={6}>
+                    <Form.Label > Your Name </Form.Label>
+                    <Form.Control value={name} onChange={(event) => handleChangeToForm(event, 'name')}/>
                     </Col>
 
-                    <Form.Label column sm={3}> Your Email </Form.Label>
-                    <Col sm={12}>
+                    
+                    <Col md={6}>
+                        <Form.Label > Your Email </Form.Label>
                         <Form.Control type='email' value={email} onChange={(event) => handleChangeToForm(event, 'email')}/>
-                    </Col>
+                    </Col>  
+
+
 
                     <Form.Label column sm={3}> Subject </Form.Label>
-                    <Col sm={12}>
+                    <Col md={12}>
                         <Form.Control value={subject} onChange={(event) => handleChangeToForm(event, 'subject')}/>
                     </Col>
                     
                     <Form.Label column sm={3}> Body </Form.Label>
-                    <Col sm={12}>
+                    <Col md={12}>
                         <Form.Control value={body} as='textarea' style={{minHeight: '200px'}} onChange={(event) => handleChangeToForm(event, 'body')}/>
                     </Col>
                 </Form.Group>
                 
                 <Form.Group as={Row} >
-                        <Col sm={12}>
+                        <Col md={12}>
                             {showMessage()}
                         </Col>
-                        <Col sm={12} >
+                        <Col md={12} >
                             <Button className='form-submit' onClick={() => sendFormAsEmail()} style={inputstyle} > Send </Button>
                         </Col>
                 </Form.Group>
             </div>
+            
             </Form>  
-        </div>
-        </React.Fragment>
     )
 
 } export default ContactForm

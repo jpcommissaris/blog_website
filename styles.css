@@ -133,7 +133,7 @@ body {
 }
 .scroll-button:hover {
     background-color: rgb(37, 2, 37) !important;
-    transition: background-color 300ms linear !important;
+    transition: background-color 150ms linear !important;
 }
 .sb-fadeOut {
     visibility: hidden !important;
@@ -149,20 +149,13 @@ body {
 .form-submit {
     background-color:white !important;
     color: black !important; 
-    border: solid 2px rgb(182, 201, 252) !important;
-    transition: background-color 300ms linear;
+    border: solid 0.5px rgb(189, 189, 189) !important;
     float: left;
 }
-
-.form-submit:hover {
-    background-color:rgb(182, 201, 252) !important;
-    transition: background-color 300ms linear;
-}
 .form-wrapper {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #7d7d7c; 
     margin: 0px 15%;
+    padding: 10px 5px;
+    background-color: #ececec;
 }
 
 /* img aspect ratio */
@@ -222,12 +215,12 @@ body {
     font-size: 24px !important;
     cursor: pointer;
     color: white;
-    transition: color 300ms linear !important;
+    transition: color 200ms ease-out !important;
     z-index: 100 !important;
 }
 .btn-hamburger:hover {
-    color: orange;
-    transition: color 300ms linear !important;
+    color: rgb(201, 199, 196);
+    transition: color 200ms ease-out !important;
 }
 
 .btn-exit {
@@ -236,12 +229,12 @@ body {
     float: right;
     font-weight: 200 !important;
     color: black;
-    transition: color 300ms linear !important;
+    transition: color 200ms ease-out !important;
     z-index: 100 !important;
 }
 .btn-exit:hover {
-    color: orange;
-    transition: color 300ms linear !important;
+    color: rgb(134, 134, 134);
+    transition: color 200ms ease-out !important;
 }
 
 .sb-slideIn {

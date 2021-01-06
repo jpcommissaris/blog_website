@@ -42,9 +42,14 @@ export const listRelatedBlogs = (blog) => {
     .catch(err => console.log(err))
 }
 
-export const getLatestBlog = () => {
+export const getLatestBlog = (blog) => {
     return fetch(`${API}/blogs/latest`, {
-        method: 'GET',
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(blog)
     })
     .then(res => {
         return res.json()

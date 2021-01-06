@@ -15,15 +15,21 @@ const AboutMe = () => {
                 <h4> Who am I? </h4>
                 <p>
                 I’m Julian, a software developer who enjoys learning about and engaing in the modern tech world. 
-                I’m a hardworking individual and a passionate programmer. I always look to get the most out of school and working opportunities. More than that, I’m a problem solver, who can spend hours perfecting and understanding problems in programming.  
+                I’m a hardworking individual and a passionate programmer. 
+                I always look to get the most out of school and working opportunities. 
+                More than that, I’m a problem solver, who can spend hours perfecting and understanding problems in programming.  
                 </p>
                 <p>
-                I believe that computer science is one of the most rewarding career paths out there. That’s because computer science is an outlet for creativity that can have real world impacts. Having said this, I also think computer science is one of the hardest fields to master. I’m someone that works every day at improving because I want to be part of a future generation that uses technology to further improve our world. On this blog and website, I plan to post that journey.  
+                I believe that computer science is one of the most rewarding career paths.
+                Computer science lets people be creative and innovative.
+                I'm someone who enjoys the creative side of CS.
+                
+
                 </p>
 
                 <h4> Education </h4>
                 <p>
-                Currently, I attend The University or California Santa Barbara. I’m a Computer Science major and honors student in the college of engineering. I take school seriously and use it as an outlet for learning. 
+                Currently, I attend The University of California Santa Barbara. I’m a Computer Science major and honors student in the college of engineering. I take school seriously and use it as an outlet for learning. 
                 </p>
 
                 <h4> Skill Set </h4> 
