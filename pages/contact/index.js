@@ -9,7 +9,7 @@ const containerstyle = {
 
 const contact = () => (
     <Layout>
-        <MetaData title='Contact Julian Commissaris' description={blog.description} />  
+        <MetaData title='Contact Julian Commissaris' description={'contact me with any questions you have'} />  
         <Container fluid style={containerstyle}>
             <ContactForm />
         </Container>
